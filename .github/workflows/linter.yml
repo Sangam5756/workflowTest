@@ -14,17 +14,13 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Run linting check
-        run: npm run lint:check
-
-      - name: Check formatting
-        run: npm run format:check
-
-      - name: builds check
-        run: npm run build
 
       - name: Run Super-Linter
         uses: github/super-linter@v4
         env:
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: builds check
+        run: npm run build
+
