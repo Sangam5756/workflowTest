@@ -1,8 +1,7 @@
 name: Linting and formatting on PR
 on:
-  pull_request:
-    branches:
-      - '**'
+  push
+  
 
 jobs:
   super-lint:
@@ -11,10 +10,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
-      - name: Setup pnpm
-        run: npm install -g pnpm
-
+      
       - name: Install Dependencies
         run: npm install
 
