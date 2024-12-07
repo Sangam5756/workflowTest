@@ -1,6 +1,8 @@
-name: Super-Linter
-
-on: push
+name: Linting and formatting on PR
+on:
+  pull_request:
+    branches:
+      - '**'
 
 jobs:
   super-lint:
@@ -9,6 +11,18 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+
+      - name: Setup pnpm
+        run: npm install -g pnpm
+                
+      - name: Install Dependencies
+        run: pnpm install
+
+      - name: Run linting check
+        run: pnpm run lint:check
+
+      - name: Check formatting
+        run: pnpm run format:check
 
       - name: Run Super-Linter
         uses: github/super-linter@v4
